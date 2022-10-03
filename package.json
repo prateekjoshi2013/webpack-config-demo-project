@@ -16,5 +16,9 @@
     "toastr": "^2.1.4",
     "typed.js": "^2.0.12",
     "validate.js": "^0.13.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   }
 }
