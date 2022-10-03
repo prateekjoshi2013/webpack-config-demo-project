@@ -3,7 +3,8 @@ import _ from 'lodash';
 import bootstrap from 'bootstrap';
 import Typed from 'typed.js';
 
-import "./libs/toast/toastr.scss";
+import "./index.css";
+import "./_vendor.scss";
 
 const footerCol1Items = ["Home", "About", "Contact us", "FAQ", "Blog"];
 const footerCol2Items = ["Flutter", "Javascript", "Java", "Nodejs", "Python"];
