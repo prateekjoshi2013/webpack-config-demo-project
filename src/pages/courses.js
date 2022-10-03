@@ -1,4 +1,10 @@
 import courseData from "../data/courses.json";
+import bootstrap from "bootstrap";
+import $ from "jquery";
+import typed from "typed.js";
+import validate from "validate.js";
+import toastr from "toastr.js";
+import _ from "lodash";
 
 function loadCourses() {
   const courseListSection = $("#course-list")[0];
