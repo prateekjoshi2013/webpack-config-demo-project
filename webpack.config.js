@@ -24,7 +24,11 @@ module.exports = {
             {
                 test: /\.s[ca]ss$/,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
-            }
+            },
+            {
+                test: /\.(png|jpeg|jpg|gif)$/,
+                type: "asset/resource",
+            },
         ]
     },
     plugins: [
