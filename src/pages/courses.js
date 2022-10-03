@@ -1,4 +1,4 @@
-// import courseData from "../data/courses.json";
+import courseData from "../data/courses.json";
 
 function loadCourses() {
   const courseListSection = $("#course-list")[0];
