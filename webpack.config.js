@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 module.exports = {
     entry: {
         index: './src/index.js',
-        courses: './src/index.js',
+        courses: './src/pages/courses.js',
     },
     output: {
         filename: '[name].bundle.js',
@@ -48,6 +48,8 @@ module.exports = {
             // two different pages we need to define the filename 
             chunks: ["courses"],
             filename: "courses.html",
+            // to serve the file with base as the path it is served from
+            base: "pages",
         }),
         new CopyWebpackPlugin({
             

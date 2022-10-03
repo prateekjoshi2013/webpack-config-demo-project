@@ -3,7 +3,7 @@ import bootstrap from "bootstrap";
 import $ from "jquery";
 import typed from "typed.js";
 import validate from "validate.js";
-import toastr from "toastr.js";
+import toastr from "toastr";
 import _ from "lodash";
 
 import "../_vendor.scss";
