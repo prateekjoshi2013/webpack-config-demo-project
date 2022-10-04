@@ -77,5 +77,17 @@ module.exports = {
         new BundleAnalyzerPlugin({
 
         }),
-    ]
+    ],
+    // Adding optimization config 
+    // this is available out of box only in webpack 5
+    optimization: {
+        // splits the bundles by dependencies,
+        // removing redundant dependencies
+        // removing reduncancies into a separate bundle 
+        // helps browser cache it once and use it on other
+        // pages without downloading it again
+        splitChunks: {
+            chunks: "all",
+        }
+    }
 }
