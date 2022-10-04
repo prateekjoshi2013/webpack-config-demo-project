@@ -54,8 +54,6 @@ body {
     linear-gradient(127.36deg, #6a11cb 31.85%, #667da5 108.53%);
 }
 
-/* Course css  */
-
 .course-banner h1 {
   color: var(--bs-blue);
   font-weight: bold;
