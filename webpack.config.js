@@ -4,6 +4,11 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
+const {PurgeCSSPlugin}  = require("purgecss-webpack-plugin");
+const glob = require("glob");
+
+const purgePath = { src: path.join(__dirname, "src") };
+
 module.exports = {
     entry: {
         index: './src/index.js',
@@ -98,7 +103,17 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             _: "lodash",
-        })
+        }),
+        /**
+         *  the regex is to scan inside src folder 
+         *  all the folders and all the files in them
+         *  nodir prevents glob from going to the path 
+         *  matching exactly the regex with ** but to 
+         *  treat it as regex
+         */
+        new PurgeCSSPlugin({
+            paths: glob.sync(`${purgePath.src}/**/*`, { nodir: true }),
+        }),
     ],
     // Adding optimization config 
     // this is available out of box only in webpack 5
