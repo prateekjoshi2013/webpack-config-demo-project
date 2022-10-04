@@ -1,7 +1,9 @@
 const path = require("path");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const { merge } = require("webpack-merge");
+const commonConfig = require("./webpack.common");
 
-module.exports = {
+module.exports = merge(commonConfig, {
     // build mode for this webpackconfig
     mode: "development",
     // dev server will serve the files from this folder
@@ -30,7 +32,7 @@ module.exports = {
 
         }),
     ],
-}
+});
 
 
 
@@ -66,7 +68,4 @@ module.exports = {
  * - HTML file creation
  * 
  * - Split chunks
- * /
-
-
-
+ */

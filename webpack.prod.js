@@ -3,10 +3,12 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { PurgeCSSPlugin } = require("purgecss-webpack-plugin");
 const glob = require("glob");
+const { merge } = require("webpack-merge");
+const commonConfig = require("./webpack.common");
 
 const purgePath = { src: path.join(__dirname, "src") };
 
-module.exports = {
+module.exports = merge(commonConfig, {
     // build mode for this webpackconfig
     mode: "production",
     module: {
@@ -63,4 +65,4 @@ module.exports = {
             // safelist: ["dummy-class-to-be-cleared-by-purgecss-plugin"],
         }),
     ],
-}
+});
