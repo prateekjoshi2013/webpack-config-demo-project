@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require("webpack");
 module.exports = {
     entry: {
         index: './src/index.js',
@@ -90,6 +91,14 @@ module.exports = {
         // will help keep css and html separate
         // we will have to change the loaders section for this 
         new MiniCssExtractPlugin(),
+        /* Shimming is the concept of binding a symbol to the library 
+         * without explicitly binding it through imports
+         * the library name should match the one in package.json
+         */
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            _: "lodash",
+        })
     ],
     // Adding optimization config 
     // this is available out of box only in webpack 5
