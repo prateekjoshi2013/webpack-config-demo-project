@@ -9,7 +9,11 @@ module.exports = {
         courses: './src/pages/courses.js',
     },
     output: {
-        filename: '[name].bundle.js',
+        // we added the contenthash to the output bundle
+        // because the browser would then get a new bundle name
+        // after every change to the bundle which will help browser 
+        // cache the new version of bundle by requesting a fresh copy
+        filename: '[name].[contenthash].bundle.js',
         path: path.resolve(__dirname, "dist"),
         clean: true,
     },
