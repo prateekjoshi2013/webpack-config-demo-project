@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 module.exports = {
     entry: {
@@ -52,21 +53,29 @@ module.exports = {
             base: "pages",
         }),
         new CopyWebpackPlugin({
-            
-            patterns:[
+
+            patterns: [
                 {
                     // what are the files to be copied in regex create new
                     //  folders in src to handle different types of assets
-                    from: path.resolve(__dirname,"src/assets/images/*"),
+                    from: path.resolve(__dirname, "src/assets/images/*"),
                     // to which root folder we need to copy these files to 
                     // it creates the rest of the folders on the path by default
-                    to: path.resolve(__dirname,"dist"),
+                    to: path.resolve(__dirname, "dist"),
                     // context is used to determine from which root folder we need to
                     // copying if we dont specify src it will create folders starting from src
                     // treating the outermost folder as root
                     context: "src",
                 }
             ]
-        })
+        }),
+        // Bundle Analyzer shows a nice ui of all the bundles we generate
+        // it shows the size of the dependencies in the bundle 
+        // which we can optimize by extracting common dependencies into
+        // a separate bundle this reduces overall bundle size by avoiding repetition 
+        // it also helps to import these dependencies dynamically when required
+        new BundleAnalyzerPlugin({
+
+        }),
     ]
 }
