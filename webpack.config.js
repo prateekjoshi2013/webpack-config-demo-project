@@ -104,6 +104,9 @@ module.exports = {
             $: "jquery",
             _: "lodash",
         }),
+        // for big projects we can further optimize css files by removing unused css 
+        // we can remove this unused css using purgecss-webpack-plugin and glob
+        // glob is  ahelper library which purgecss plugin uses to scan folders
         /**
          *  the regex is to scan inside src folder 
          *  all the folders and all the files in them
@@ -131,6 +134,41 @@ module.exports = {
     }
 }
 
-// for big projects we can further optimize css files by removing unused css 
-// we can remove this unused css using purgecss-webpack-plugin and glob
-// glob is  ahelper library which purgecss plugin uses to scan folders
+
+
+/**
+ * Difference Between  Prod and Dev config:
+ * 
+ * ------------Production Webpack Configuration----------------
+ * 
+ * - Minification of HTML/CSSS/JS files
+ * 
+ * - Tree Shaking/ Dead Code Elimination JS/CSS
+ * 
+ * - Copying of assets to dist to maintain 
+ *   references the same way as src folder 
+ *   structure
+ * 
+ * - Production env variables
+ * 
+ * - Split chunks
+ * 
+ * ------------Development Webpack Configuration----------------
+ * 
+ * - Webpack Dev Server
+ * 
+ * - Dev env variables
+ * 
+ * - Bundle Analyzer
+ * 
+ * -------------Common Webpack Configuration--------------------
+ * - Setup of loaders
+ * 
+ * - Entry and Output specifications
+ * 
+ * - HTML file creation
+ * 
+ * /
+
+
+
