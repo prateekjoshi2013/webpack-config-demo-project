@@ -1,6 +1,6 @@
 @import url('./assets/css/font-awesome.min.css');
 
-.dummy-class-to-becleared-by-purgecss-plugin{
+.dummy-class-to-be-cleared-by-purgecss-plugin{
   color: pink;
 }
 

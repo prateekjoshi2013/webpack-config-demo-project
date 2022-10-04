@@ -113,6 +113,8 @@ module.exports = {
          */
         new PurgeCSSPlugin({
             paths: glob.sync(`${purgePath.src}/**/*`, { nodir: true }),
+            //to ignore a class from getting purged add it to the safelist like this
+            // safelist: ["dummy-class-to-be-cleared-by-purgecss-plugin"],
         }),
     ],
     // Adding optimization config 
