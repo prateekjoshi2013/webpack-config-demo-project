@@ -95,3 +95,7 @@ module.exports = {
         }
     }
 }
+
+// its better to extract css out of html because 
+// that will cause only css or html to be fetched 
+// in case of changes independent of the other
