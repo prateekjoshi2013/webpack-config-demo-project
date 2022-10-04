@@ -113,3 +113,7 @@ module.exports = {
         }
     }
 }
+
+// for big projects we can further optimize css files by removing unused css 
+// we can remove this unused css using purgecss-webpack-plugin and glob
+// glob is  ahelper library which purgecss plugin uses to scan folders
