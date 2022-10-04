@@ -7,8 +7,6 @@ import toastr from 'toastr';
 import "./index.css";
 import "./_vendor.scss";
 
-import showModal from "./components/modal";
-
 const footerCol1Items = ["Home", "About", "Contact us", "FAQ", "Blog"];
 const footerCol2Items = ["Flutter", "Javascript", "Java", "Nodejs", "Python"];
 const footerCol3Items = ["Home", "Feature", "Pricing", "FAQ", "About"];
@@ -59,8 +57,17 @@ buildFooterItems(footerCol2, footerCol2Items);
 buildFooterItems(footerCol3, footerCol3Items);
 
 $("#pricing-plan").on("click", function () {
-  showModal();
-  $("#myModal").css("display", "block");
+  // Added dynamic import for modal component naming the 
+  // chunk "modal" (in ") then space and the actual file 
+  // path for the import this statement return a promise
+  // which returns the module we are importing
+  import(/* webpackChunkName: "modal" */ "./components/modal")
+    .then(module => {
+      const showModal = module.default
+      showModal();
+      $("#myModal").css("display", "block");
+    }
+    );
 });
 
 // const bannerEl = $("#banner-image")[0];
