@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
-
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
     entry: {
         index: './src/index.js',
@@ -25,11 +25,11 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
                 test: /\.s[ca]ss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
             },
             {
                 test: /\.(png|jpeg|jpg|gif)$/,
@@ -81,6 +81,15 @@ module.exports = {
         new BundleAnalyzerPlugin({
 
         }),
+        // its better to extract css out of html because 
+        // that will cause only css or html to be fetched 
+        // in case of changes independent of the other
+        // this means the style-loader which was injecting 
+        // css as inline styles needs to be replaced by the 
+        // loader provided by the MiniCssExtractPlugin which 
+        // will help keep css and html separate
+        // we will have to change the loaders section for this 
+        new MiniCssExtractPlugin(),
     ],
     // Adding optimization config 
     // this is available out of box only in webpack 5
@@ -95,7 +104,3 @@ module.exports = {
         }
     }
 }
-
-// its better to extract css out of html because 
-// that will cause only css or html to be fetched 
-// in case of changes independent of the other

@@ -7,8 +7,8 @@ import toastr from "toastr";
 import _ from "lodash";
 
 import "../_vendor.scss";
-import "../index.css";
 import "../assets/css/font-awesome.min.css";
+import "../index.css";
 
 function loadCourses() {
   const courseListSection = $("#course-list")[0];
